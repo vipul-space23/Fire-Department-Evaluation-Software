@@ -1,0 +1,82 @@
+/* login.css */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f1f1f1; /* Light background for contrast */
+  }
+  
+  .login-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+    max-width: 400px; /* Set a max width for the container */
+    width: 100%; /* Make it responsive */
+  }
+  
+   #c1{
+    text-align: left;
+    color: #6A4035; /* Adjusted color for the heading */
+    margin-bottom: 20px;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Spacing between inputs */
+  }
+  
+  .form-group label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    text-align: left;
+  }
+  
+  input,
+  select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  input:focus,
+  select:focus {
+    border-color: #ff6f00; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+  }
+  
+  .submit-btn {
+    background-color: #ff6f00;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-btn:hover {
+    background-color: #ff8c1a; /* Hover effect for button */
+  }
+  
+  .form-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  /* Add a nice container border */
+  .login-container {
+    border: 1px solid #e0e0e0; /* Light border around the container */
+    background: linear-gradient(135deg, #f9f9f9, #fff); /* Subtle gradient */
+  }
+  
+  /* Optional: Add a small logo or icon at the top */
+  .logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
