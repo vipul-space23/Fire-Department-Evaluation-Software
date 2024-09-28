@@ -8,6 +8,7 @@ import Sidebar from "./Components/Sidebar";
 import './Components/Sidebar.css';
 import './Pages/CSS/Dashboardmod.css';
 import Inspection from "./Pages/Inspection";
+import UserDash from './Pages/UserDash'; // Import UserDash component
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -26,10 +27,13 @@ function App() {
             <Route path="/" element={<SignUp />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/Dashboard" element={<Dashboard />} />
-
+            
             {/* Layout with Sidebar */}
             <Route path="/NocDashboard" element={<NocDashboard />} />
             <Route path="/Inspection" element={<Inspection />} />
+            
+            {/* Add the UserDash route */}
+            <Route path="/UserDash" element={<UserDash />} />
           </Routes>
         </div>
       </div>
