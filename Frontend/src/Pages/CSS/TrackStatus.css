@@ -1,75 +1,77 @@
 .track-status-container {
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-  }
-  
-  .status-list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .status-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .status-item.completed {
-    background-color: #d4edda;
-    border-color: #28a745;
-    color: #155724;
-  }
-  
-  .status-item.processing {
-    background-color: #ffeeba;
-    border-color: #ffc107;
-    color: #856404;
-    animation: processingPulse 1.5s infinite;
-  }
-  
-  .status-number {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    border-radius: 50%;
-    background-color: #eee;
-    margin-right: 10px;
-  }
-  
-  .status-progress {
-    margin-left: auto;
-    font-style: italic;
-    color: #ffc107;
-  }
-  
-  .status-done {
-    margin-left: auto;
-    color: #28a745;
-  }
-  
-  .current-status {
-    font-weight: bold;
-    margin-top: 20px;
-  }
-  
-  /* Keyframes for animation */
-  @keyframes processingPulse {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.05);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-  
+  background-color: #ffffff; /* White background for a clean look */
+  padding: 40px; /* Increased padding for a more spacious feel */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); /* Deeper shadow for modern look */
+  max-width: 650px; /* Adjusted width */
+  margin: 40px auto; /* Center and give vertical space */
+  text-align: center; /* Centered text */
+}
+
+h2 {
+  color: #e74c3c; /* Bright fire department red */
+  font-size: 2rem; /* Slightly larger font size */
+  margin-bottom: 20px; /* Reduced margin for tighter layout */
+  font-weight: bold; /* Bold font for emphasis */
+  letter-spacing: 1px; /* Slightly increased letter spacing */
+}
+
+.status-list {
+  list-style-type: none; /* Remove default list styling */
+  padding: 0; /* Remove padding */
+}
+
+.status-item {
+  padding: 15px 20px; /* Adjusted padding for better spacing */
+  margin: 12px 0; /* Margin between items */
+  border-radius: 8px; /* Rounded corners */
+  border: 2px solid #eee; /* Light border for separation */
+  background-color: #f7f7f7; /* Light background for items */
+  display: flex; /* Flexbox for layout */
+  justify-content: space-between; /* Space between items */
+  align-items: center; /* Center vertically */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Soft shadow */
+}
+
+.status-item .status-number {
+  font-weight: bold; /* Bold for emphasis */
+  font-size: 1.2rem; /* Responsive font size */
+}
+
+.status-item.processing {
+  background-color: #ffeaa7; /* Light yellow for processing */
+  border-left: 6px solid #f1c40f; /* Highlight processing */
+}
+
+.status-item.completed {
+  background-color: #d4efdf; /* Light green for completed */
+  border-left: 6px solid #2ecc71; /* Highlight completion */
+}
+
+.status-item:hover {
+  background-color: #e9ecef; /* Slight gray hover effect */
+  transform: translateY(-2px); /* Lift effect on hover */
+}
+
+.status-progress {
+  color: #f39c12; /* Bright orange for processing status */
+  font-weight: bold; /* Bold font for emphasis */
+  font-size: 1rem; /* Responsive font size */
+}
+
+.status-done {
+  color: #2ecc71; /* Green for completed status */
+  font-weight: bold; /* Bold font for emphasis */
+  font-size: 1rem; /* Responsive font size */
+}
+
+.current-status {
+  margin-top: 30px; /* Space above current status */
+  font-size: 1.2rem; /* Responsive font size */
+  font-weight: bold; /* Bold font for emphasis */
+  color: #555; /* Subtle gray */
+  text-align: left; /* Align left */
+  padding-top: 10px; /* Space above current status */
+  border-top: 2px solid #eee; /* Divider line */
+}

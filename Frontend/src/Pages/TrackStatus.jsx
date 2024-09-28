@@ -1,5 +1,5 @@
 import React from 'react';
-import './TrackStatus.css';
+import './CSS/TrackStatus.css';
 
 const applicationStatuses = [
   "Application Submitted",

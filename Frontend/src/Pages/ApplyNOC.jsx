@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './ApplyNOC.css';
+import './CSS/ApplyNOC.css';
 
 function ApplyNOC() {
   const [applicantInfo, setApplicantInfo] = useState({

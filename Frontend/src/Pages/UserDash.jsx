@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import ApplyNOC from './ApplyNOC'; // Correct path for importing ApplyNOC component
 import TrackStatus from './TrackStatus';
-import './UserDash.css';
+
+import './CSS/UserDash.css'; // Ensure UserDash.css is in the CSS subdirectory of Pages
 
 function UserDash() {
   const [activeTab, setActiveTab] = useState('Home');
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // New state for sidebar visibility
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Sidebar visibility state
 
   const currentStatus = "Inspection Scheduled"; // Example status
 
@@ -16,10 +17,7 @@ function UserDash() {
   return (
     <div className="app-container">
       <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
-        <button className="sidebar-toggle" onClick={toggleSidebar}>
-          <span className="material-icons">menu</span>
-        </button>
-        <h3>Fire Dept. NOC</h3>
+        <h3>FIRE DEPT. NOC</h3>
         <ul>
           <li
             className={activeTab === 'Home' ? 'active' : ''}
@@ -28,7 +26,7 @@ function UserDash() {
               setIsSidebarOpen(false); // Close sidebar on selection
             }}
           >
-            <span className="material-icons">home</span> Home
+            <span className="material-icons"></span> Home
           </li>
           <li
             className={activeTab === 'Apply' ? 'active' : ''}
@@ -37,7 +35,7 @@ function UserDash() {
               setIsSidebarOpen(false); // Close sidebar on selection
             }}
           >
-            <span className="material-icons">description</span> Apply for NOC
+            <span className="material-icons"></span> Apply for NOC
           </li>
           <li
             className={activeTab === 'Track' ? 'active' : ''}
@@ -46,17 +44,19 @@ function UserDash() {
               setIsSidebarOpen(false); // Close sidebar on selection
             }}
           >
-            <span className="material-icons">find_in_page</span> Track Application
+            <span className="material-icons"></span> Track Application
           </li>
         </ul>
         <button className="logout-button">
-          <span className="material-icons">logout</span> Logout
+          <span className="material-icons"></span> Logout
         </button>
       </div>
+
       <div className="content">
-        <button className="sidebar-toggle" onClick={toggleSidebar}>
-          <span className="material-icons">menu</span>
-        </button>
+        <span className={`hamburger ${isSidebarOpen ? 'close' : ''}`} onClick={toggleSidebar}>
+          {isSidebarOpen ? '' : ''} {/* Change icon based on state */}
+        </span>
+
         {activeTab === 'Home' && (
           <div className="welcome-message">
             <h2>Welcome to Fire Department NOC Portal</h2>
