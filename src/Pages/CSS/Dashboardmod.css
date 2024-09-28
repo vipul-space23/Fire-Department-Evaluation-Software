@@ -1,0 +1,188 @@
+/* General styling for the dashboard area */
+.dashboard-container {
+    display: flex;
+    background-color: #f4f4f9;
+    height: 100vh;
+    position: relative;
+}
+
+/* Sidebar styling for sliding */
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    background-color: #8B0000; /* Dark Red */
+    padding-top: 20px;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: -250px; /* Completely off-screen when hidden */
+    transition: left 0.3s ease; /* Smooth sliding */
+}
+
+.sidebar.active {
+    left: 0; /* Slide in when active */
+}
+
+.sidebar h5 {
+    text-align: center;
+    font-size: 18px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 15px;
+    border-bottom: 1px solid #ffffff33;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.sidebar ul li a:hover {
+    background-color: #b22222; /* Lighter red */
+    border-radius: 4px;
+}
+
+/* Hamburger menu styling */
+.hamburger {
+    font-size: 30px;
+    color: #8B0000;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* Main dashboard area */
+.dashboard-main {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #ffffff;
+    width: 100%; /* Full width when sidebar is hidden */
+    transition: all 0.3s ease; /* Smooth transition for content shift */
+}
+
+.dashboard-container.sidebar-open .dashboard-main {
+    margin-left: 250px; /* Shift content when sidebar is open */
+}
+
+/* Dashboard Stats */
+.dashboard-stats .card {
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    margin-bottom: 20px;
+}
+
+.dashboard-stats .card h6 {
+    font-size: 16px;
+    color: #8B0000; /* Dark Red */
+}
+
+.dashboard-stats .card p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* NOC Requests table */
+.noc-requests .table {
+    background-color: white;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.noc-requests .table th, .noc-requests .table td {
+    padding: 12px 15px;
+    border: 1px solid #dddddd;
+    text-align: left;
+}
+
+.noc-requests .table th {
+    background-color: #8B0000; /* Dark Red for table header */
+    color: white;
+}
+
+/* Dashboard Stats Flex Layout */
+.dashboard-stats {
+    display: flex;
+    justify-content: space-between; /* Spacing between the items */
+    margin-bottom: 20px;
+}
+
+.dashboard-stat {
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 30%; /* Adjust width to ensure each card is smaller */
+    transition: transform 0.2s ease-in-out;
+}
+
+.dashboard-stat:hover {
+    transform: scale(1.05); /* Add hover effect for slight animation */
+}
+
+/* Styling for the numbers and text */
+.stat-number {
+    font-size: 36px;
+    font-weight: bold;
+    color: #8B0000; /* Dark red theme color */
+}
+
+.stat-label {
+    font-size: 16px;
+    font-weight: normal;
+    color: #333; /* Slightly darker text for contrast */
+}
+
+/* Button Styles */
+.btn-success, .btn-danger {
+    padding: 5px 8px; /* Adjust padding for smaller button size */
+    min-width: 40px; /* Set a minimum width */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px; /* Smaller font size */
+    transition: background-color 0.3s;
+}
+
+.btn-success {
+    background-color: #4caf50; /* Green for approve */
+}
+
+.btn-danger {
+    background-color: #f44336; /* Red for reject */
+}
+
+.btn-success:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.btn-danger:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
+
+/* Close Button Style */
+.close-button {
+    padding: 8px 15px; /* Adjust padding */
+    background-color: #b22222; /* Different color for Close button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; /* Adjust font size */
+    transition: background-color 0.3s;
+}
+
+.close-button:hover {
+    background-color: #a00000; /* Darker shade on hover */
+}

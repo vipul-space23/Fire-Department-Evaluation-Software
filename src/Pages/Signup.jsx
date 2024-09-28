@@ -1,17 +1,18 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import './CSS/SignUpmod.css';
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import './CSS/SignUpmod.css'; // Ensure this CSS file exists with the appropriate styles
 
-const SignUp = () => {
+const Register = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    name: "",
+    username: "",   // Ensure this is named 'username'
     email: "",
-    contact: "",
+    phone: "",      // Ensure this is named 'phone'
     address: "",
     password: "",
   });
 
-  const handleChange = (e) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -19,87 +20,107 @@ const SignUp = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Sign Up Data Submitted:", formData);
+    try {
+      const response = await fetch('http://localhost:5000/api/auth/register', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),  // Ensure the body includes all required fields
+      });
+
+      if (response.ok) {
+        const res_data = await response.json();
+        console.log("Response from server:", res_data);
+        localStorage.setItem('token', res_data.token);
+        navigate("/login");
+      } else {
+        const errorData = await response.json();
+        console.error("Registration failed:", errorData.msg);
+      }
+    } catch (error) {
+      console.error("Error during registration:", error);
+    }
   };
 
   return (
-    <div className="signup-page">
-      <div className="signup-container">
-        <h1 id="acc">Create Your Account</h1>
+    <section>
+      <div className="section-registration">
+        <div className="signup-container">
+          <h1 className="main-heading mb-3">Create Your Account</h1>
+          <form onSubmit={handleSubmit} className="signup-form">
+            <div className="form-group">
+              <label>Username:</label>  {/* Changed label to 'Username' */}
+              <input
+                type="text"
+                name="username"         // Name is now 'username'
+                value={formData.username}
+                onChange={handleInputChange}
+                placeholder="Enter your username"
+                required
+              />
+            </div>
 
-        <form onSubmit={handleSubmit} className="signup-form">
-          <div className="form-group">
-            <label>Name:</label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Enter your name"
-              required
-            />
-          </div>
+            <div className="form-group">
+              <label>Email:</label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                placeholder="Enter your email"
+                required
+              />
+            </div>
 
-          <div className="form-group">
-            <label>Email:</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Enter your email"
-              required
-            />
-          </div>
+            <div className="form-group">
+              <label>Phone:</label>  {/* Changed label to 'Phone' */}
+              <input
+                type="text"
+                name="phone"             // Name is now 'phone'
+                value={formData.phone}
+                onChange={handleInputChange}
+                placeholder="Enter your phone number"
+                required
+              />
+            </div>
 
-          <div className="form-group">
-            <label>Contact:</label>
-            <input
-              type="text"
-              name="contact"
-              value={formData.contact}
-              onChange={handleChange}
-              placeholder="Enter your contact number"
-              required
-            />
-          </div>
+            <div className="form-group">
+              <label>Address:</label>
+              <input
+                type="text"
+                name="address"
+                value={formData.address}
+                onChange={handleInputChange}
+                placeholder="Enter your address"
+                required
+              />
+            </div>
 
-          <div className="form-group">
-            <label>Address:</label>
-            <input
-              type="text"
-              name="address"
-              value={formData.address}
-              onChange={handleChange}
-              placeholder="Enter your address"
-              required
-            />
-          </div>
+            <div className="form-group">
+              <label>Password:</label>
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleInputChange}
+                placeholder="Enter your password"
+                required
+              />
+            </div>
 
-          <div className="form-group">
-            <label>Password:</label>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="Enter your password"
-              required
-            />
-          </div>
+            <button type="submit" className="submit-btn">Register Now</button>
 
-          <button type="submit" className="submit-btn">Sign Up</button>
-
-          {/* Link to Login page */}
-          <div className="form-links">
-            <Link to="/">Already have an account? </Link>
-          </div>
-        </form>
+            <div className="form-links">
+              <Link to="/">Already have an account?</Link>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default SignUp;
+export default Register;
