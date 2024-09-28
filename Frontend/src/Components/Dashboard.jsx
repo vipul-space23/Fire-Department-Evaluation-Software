@@ -1,4 +1,3 @@
-// Dashboard.jsx
 import React, { useState } from 'react';
 import Sidebar from './Sidebar';
 import DashboardStats from './DashboardStats';
@@ -21,14 +20,13 @@ function Dashboard() {
             </span>
 
             {/* Sidebar */}
-            <div className={`sidebar ${sidebarOpen ? 'active' : ''}`}>
-                <Sidebar toggleSidebar={toggleSidebar} /> {/* Pass the toggle function */}
-            </div>
+            <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
 
             {/* Main dashboard content */}
             <div className="dashboard-main">
+                <h1 id="head">Fire Fighter's</h1>
                 <DashboardStats />
-                <NocRequests />
+                <NocRequests toggleSidebar={toggleSidebar} isOpen={sidebarOpen} /> {/* Pass props */}
             </div>
         </div>
     );

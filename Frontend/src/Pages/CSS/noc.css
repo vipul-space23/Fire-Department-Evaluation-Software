@@ -78,3 +78,23 @@ body {
     }
   }
   
+
+  /* Main dashboard area */
+.noc-requests-container {
+  display: flex; /* Use flex layout */
+  background-color: #f4f4f9;
+  height: 100vh;
+  position: relative;
+}
+
+.noc-requests {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #ffffff;
+  transition: margin-left 0.3s ease; /* Smooth transition for content shift */
+}
+
+/* Add this class to shift the content when sidebar is open */
+.noc-requests-container.sidebar-open .noc-requests {
+  margin-left: 250px; /* Shift content when sidebar is open */
+}

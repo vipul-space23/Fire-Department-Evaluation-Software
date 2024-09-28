@@ -1,0 +1,108 @@
+/* General Body Styles */
+body {
+  background-color: #ffffff;
+}
+
+/* NOC Dashboard Wrapper */
+.noc-dashboard-wrapper {
+  display: flex; /* Flexbox for layout */
+  height: 100vh; /* Full height for the wrapper */
+}
+
+/* Sidebar Styling */
+.sidebar {
+  height: 100vh; /* Ensure sidebar takes full height */
+  width: 250px; /* Fixed width */
+  background-color: #8B0000; /* Dark Red for visibility */
+  color: white; /* White text color */
+  position: fixed; /* Fixed positioning */
+  top: 0;
+  left: -250px; /* Off-screen initially */
+  transition: left 0.3s ease; /* Smooth transition */
+}
+
+.sidebar.active {
+  left: 0; /* Bring into view */
+}
+
+/* Main Dashboard Container */
+.noc-dashboard-container {
+  flex: 1; /* Take the remaining space */
+  padding: 20px;
+  margin-left: 250px; /* Space for the sidebar */
+  transition: margin-left 0.3s ease; /* Smooth transition for shifting */
+}
+
+.noc-dashboard-wrapper.sidebar-open .noc-dashboard-container {
+  margin-left: 0; /* No margin when sidebar is open */
+}
+
+/* Header and Text Styles */
+h1 {
+  color: #8B0000; /* Dark Red for headings */
+}
+
+/* Search Bar */
+.search-bar {
+  display: flex;
+  margin-bottom: 20px; /* Spacing below */
+}
+
+.search-bar input {
+  width: 300px; /* Fixed width */
+  padding: 10px; /* Padding inside */
+  border: 1px solid #8B0000; /* Border color */
+  border-radius: 4px; /* Rounded corners */
+}
+
+.search-bar .search-btn {
+  background-color: #8B0000; /* Dark Red */
+  color: white; /* White text */
+  border: none; /* No border */
+  padding: 10px 15px; /* Padding */
+  cursor: pointer; /* Pointer on hover */
+  margin-left: 10px; /* Space to the left */
+  border-radius: 4px; /* Rounded corners */
+}
+
+/* Table Styles */
+table {
+  width: 100%; /* Full width */
+  border-collapse: collapse; /* Collapse borders */
+  margin-bottom: 20px; /* Space below */
+}
+
+table th, table td {
+  text-align: left; /* Left alignment */
+  padding: 12px; /* Padding inside */
+  border-bottom: 1px solid #dddddd; /* Light gray bottom border */
+}
+
+table th {
+  background-color: #f2f2f2; /* Light background for header */
+}
+
+/* Status Styles */
+.status-approved {
+  background-color: #8B0000; /* Dark Red background */
+  color: white; /* White text */
+  padding: 5px 10px; /* Padding */
+  border-radius: 5px; /* Rounded corners */
+}
+
+/* Filter and Sort Buttons */
+.filter-sort {
+  display: flex; /* Flexbox layout */
+  justify-content: flex-end; /* Align to the right */
+  margin-top: 20px; /* Space above */
+}
+
+.filter-btn, .sort-btn {
+  background-color: #8B0000; /* Dark Red */
+  color: white; /* White text */
+  border: none; /* No border */
+  padding: 10px 15px; /* Padding */
+  cursor: pointer; /* Pointer on hover */
+  margin-left: 10px; /* Space to the left */
+  border-radius: 4px; /* Rounded corners */
+}

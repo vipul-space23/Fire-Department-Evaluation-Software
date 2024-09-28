@@ -1,0 +1,83 @@
+/* Sidebar styling */
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    background-color: #8B0000; /* Dark Red */
+    padding-top: 20px;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: -250px; /* Initially off-screen */
+    transition: left 0.3s ease; /* Smooth sliding transition */
+    z-index: 1000; /* Ensure it's above other elements */
+}
+
+.sidebar.active {
+    left: 0; /* Slide in when active */
+}
+
+.sidebar h5 {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 15px;
+    border-bottom: 1px solid #ffffff33; /* Semi-transparent white border */
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+}
+
+.sidebar ul li a:hover {
+    background-color: #b22222; /* Lighter red */
+    border-radius: 4px;
+    padding-left: 10px; /* Indent on hover */
+    transition: all 0.3s ease; /* Smooth hover transition */
+}
+
+/* Close button section */
+.close-section {
+    text-align: center; /* Center the close button */
+    margin-top: auto; /* Push it to the bottom of the sidebar */
+    padding: 20px 0; /* Add some padding */
+}
+
+.close-btn {
+    padding: 10px 15px;
+    background-color: #000000; /* Black background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    text-align: center; /* Center text inside the button */
+    width: 100px; /* Fixed button width */
+}
+
+.close-btn:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
+
+/* Hamburger menu styling (optional) */
+.hamburger {
+    font-size: 30px;
+    color: #8B0000;
+    cursor: pointer;
+    padding: 10px;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1001; /* Above the sidebar */
+}

@@ -1,0 +1,70 @@
+/* Inspection.css */
+
+.dashboard-container {
+    display: flex;
+  }
+  
+  .dashboard-main {
+    flex: 1;
+    padding: 20px;
+    background-color: #f4f4f9; /* Light background for the main content */
+    transition: margin-left 0.3s ease; /* Smooth transition for content shift */
+  }
+  
+  .sidebar-open .dashboard-main {
+    margin-left: 250px; /* Adjust margin to match sidebar width */
+  }
+  
+  h1, h2 {
+    color: #8B0000; /* Dark Red for headers */
+  }
+  
+  .inspections-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .inspections-table th, .inspections-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .inspections-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .status-scheduled {
+    color: blue; /* Color for Scheduled */
+  }
+  
+  .status-completed {
+    color: green; /* Color for Completed */
+  }
+  
+  .action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px; /* Make the button icons larger */
+    margin-right: 10px;
+  }
+  
+  .new-inspection-form {
+    margin-top: 20px;
+  }
+  
+  .new-inspection-form input {
+    margin-right: 10px;
+  }
+  
+  .new-inspection-form button {
+    background-color: #8B0000; /* Dark Red */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  

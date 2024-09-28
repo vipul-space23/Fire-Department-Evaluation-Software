@@ -114,7 +114,7 @@ const Register = () => {
             <button type="submit" className="submit-btn">Register Now</button>
 
             <div className="form-links">
-              <Link to="/">Already have an account?</Link>
+              <Link to="/Login">Already have an account?</Link>
             </div>
           </form>
         </div>

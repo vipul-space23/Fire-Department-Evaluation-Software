@@ -71,7 +71,7 @@ const Login = () => {
 
           {/* Link to Sign Up page */}
           <div className="form-links">
-            <Link to="/signup">Create Account</Link>
+            <Link to="/">Create Account</Link>
             <a href="#">Need Help?</a>
           </div>
         </form>
