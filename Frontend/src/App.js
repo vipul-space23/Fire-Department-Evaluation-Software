@@ -20,7 +20,7 @@ function App() {
   return (
     <Router>
       <div className={`layout ${sidebarOpen ? 'sidebar-open' : ''}`}>
-        <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+        {/* <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} /> */}
         <div className="main-content">
           <Routes>
             {/* Routes without Sidebar */}
