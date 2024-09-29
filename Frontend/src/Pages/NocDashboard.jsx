@@ -1,63 +1,118 @@
-import React, { useState } from "react";
-import "./CSS/Nocdash.css";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import Sidebar from "../Components/Sidebar"; // Ensure Sidebar is imported
-import './CSS/Dashboardmod.css'; // Import necessary CSS
+import './CSS/Nocdash.css'; // Import necessary CSS
 
 const NocDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false); // State for sidebar visibility
-  const [requests] = useState([
-    { id: "NOOC-010", title: "Introduce Advanced Firefighting Equipment", status: "Approved", date: "2023-09-25", requester: "Chris Taylor" },
-    { id: "NOOC-008", title: "Revise Fire Safety Inspection Checklist", status: "Approved", date: "2023-09-22", requester: "Sarah Williams" },
-    { id: "NOOC-005", title: "Upgrade Communication Systems", status: "Approved", date: "2023-09-20", requester: "Mike Johnson" },
-    { id: "NOOC-003", title: "Implement New Emergency Response Protocol", status: "Approved", date: "2023-09-18", requester: "Jane Smith" },
-    { id: "NOOC-001", title: "Update Fire Engine Maintenance Schedule", status: "Approved", date: "2023-09-15", requester: "John Doe" },
-  ]);
+  const [requests, setRequests] = useState([]); // State for NOC requests
+  const [searchTerm, setSearchTerm] = useState(""); // State for search input
+  const [filterStatus, setFilterStatus] = useState(""); // State for filter
 
   // Function to toggle sidebar visibility
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
+  // Function to fetch NOCs from the database
+  const fetchRequests = async () => {
+    try {
+      const response = await axios.get('http://localhost:5001/api/nocs'); // Fetch NOCs from API
+      setRequests(response.data); // Update state with fetched data
+    } catch (error) {
+      console.error("Error fetching NOCs:", error);
+    }
+  };
+
+  // Effect to fetch requests on component mount
+  useEffect(() => {
+    fetchRequests();
+  }, []);
+
+  // Function to handle search
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  // Function to handle filter
+  const handleFilter = (status) => {
+    setFilterStatus(status);
+  };
+
+  // Function to approve a NOC application
+  const approveRequest = async (id) => {
+    try {
+      await axios.post(`http://localhost:5001/api/nocs/${id}/approve`); // Send approve request to API
+      fetchRequests(); // Refetch requests after approval
+    } catch (error) {
+      console.error("Error approving request:", error);
+    }
+  };
+
+  // Function to disapprove a NOC application
+  const disapproveRequest = async (id) => {
+    try {
+      await axios.post(`http://localhost:5001/api/nocs/${id}/disapprove`); // Send disapprove request to API
+      fetchRequests(); // Refetch requests after disapproval
+    } catch (error) {
+      console.error("Error disapproving request:", error);
+    }
+  };
+
+  // Filter and search logic
+  const filteredRequests = requests.filter(request =>
+    request.propertyDetails?.propertyType?.toLowerCase().includes(searchTerm.toLowerCase()) &&
+    (filterStatus ? request.status === filterStatus : true)
+  );
+
   return (
     <div className={`noc-dashboard-wrapper dashboard-container ${sidebarOpen ? 'sidebar-open' : ''}`}>
       <span className={`hamburger ${sidebarOpen ? 'close' : ''}`} onClick={toggleSidebar}>
-        {sidebarOpen ? '✖' : '☰'} {/* Change icon based on state */}
+        {sidebarOpen ? '✖' : '☰'}
       </span>
       
-      <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} /> {/* Render Sidebar */}
+      <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
       
       <div className="noc-dashboard-container">
-        <h1>Approved NOOC Requests Dashboard</h1>
+        <h1>NOC Requests Dashboard</h1>
         <div className="search-bar">
-          <input type="text" placeholder="Search requests..." />
-          <button className="search-btn">🔍</button>
+          <input type="text" placeholder="Search requests..." value={searchTerm} onChange={handleSearch} />
+        </div>
+        <div className="filter-sort">
+          <button className="filter-btn" onClick={() => handleFilter('Approved')}>Show Approved</button>
+          <button className="filter-btn" onClick={() => handleFilter('Disapproved')}>Show Disapproved</button>
+          <button className="filter-btn" onClick={() => handleFilter('Pending')}>Show Pending</button>
+          <button className="filter-btn" onClick={() => handleFilter("")}>Show All</button>
         </div>
         <table className="requests-table">
           <thead>
             <tr>
               <th>Request ID</th>
-              <th>Title</th>
+              <th>Property Type</th>
               <th>Status</th>
-              <th>Date</th>
-              <th>Requester</th>
+              <th>Preferred Date</th>
+              <th>Requester Name</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {requests.map((request) => (
-              <tr key={request.id}>
-                <td>{request.id}</td>
-                <td>{request.title}</td>
-                <td><span className="status-approved">{request.status}</span></td>
-                <td>{request.date}</td>
-                <td>{request.requester}</td>
+            {filteredRequests.map((request) => (
+              <tr key={request._id}>
+                <td>{request._id}</td>
+                <td>{request.propertyDetails?.propertyType}</td>
+                <td><span className={`status-${request.status.toLowerCase()}`}>{request.status}</span></td>
+                <td>{request.preferredDate}</td>
+                <td>{request.applicantInfo?.name}</td>
+                <td>
+                  <div className="actions-button">
+                    <button onClick={() => approveRequest(request._id)}>Approve</button>
+                    <button onClick={() => disapproveRequest(request._id)}>Disapprove</button>
+                  </div>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
-        <div className="filter-sort">
-          <button className="filter-btn">Filter</button>
-          <button className="sort-btn">Sort</button>
-        </div>
       </div>
     </div>
   );

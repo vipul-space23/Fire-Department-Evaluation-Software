@@ -106,3 +106,35 @@ table th {
   margin-left: 10px; /* Space to the left */
   border-radius: 4px; /* Rounded corners */
 }
+
+/* Button styles */
+.actions-button {
+  display: flex;
+  gap: 15px; /* Space between buttons */
+}
+
+/* Approve button */
+.actions-button button:first-child {
+  background-color: #007bff; /* Blue color for approve button */
+  color: white;
+  padding: 10px 15px; /* Padding */
+  border: none; /* No border */
+  border-radius: 4px; /* Rounded corners */
+}
+
+.actions-button button:first-child:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Disapprove button */
+.actions-button button:last-child {
+  background-color: black; /* Black color for disapprove button */
+  color: white;
+  padding: 10px 15px; /* Padding */
+  border: none; /* No border */
+  border-radius: 4px; /* Rounded corners */
+}
+
+.actions-button button:last-child:hover {
+  background-color: #444; /* Darker black on hover */
+}
