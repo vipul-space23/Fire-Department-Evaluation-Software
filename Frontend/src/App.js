@@ -5,7 +5,7 @@ import SignUp from "./Pages/Signup";
 import Dashboard from "./Components/Dashboard";
 import NocDashboard from "./Pages/NocDashboard";
 import Sidebar from "./Components/Sidebar";
-import './Components/Sidebar.css';
+import './Components/Sidebarmod.css';
 import './Pages/CSS/Dashboardmod.css';
 import Inspection from "./Pages/Inspection";
 import UserDash from './Pages/UserDash';
@@ -21,7 +21,7 @@ function App() {
   return (
     <Router>
       <div className={`layout ${sidebarOpen ? 'sidebar-open' : ''}`}>
-        <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+        {/* <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} /> */}
         <div className="main-content">
           <Routes>
             {/* Routes without Sidebar */}

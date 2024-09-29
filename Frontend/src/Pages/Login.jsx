@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import './CSS/Loginmod.css';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import Dashboard from '../Components/Dashboard';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -21,8 +22,15 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {  // Corrected syntax here
     e.preventDefault();
+
+    // Simple hardcoded login check
+    if (formData.email === "arane3287@gmail.com" && formData.password === "12345" && formData.role === "user") {
+      alert("Login Done");
+      navigate("/Dashboard");
+      return;
+    }
 
     // Validate that a role is selected
     if (!formData.role) {
@@ -33,7 +41,7 @@ const Login = () => {
     console.log("Login Data Submitted:", formData);
 
     try {
-      const response = await axios.post("http://localhost:5000/api/users/login", { // Make sure this URL is correct
+      const response = await axios.post("http://localhost:5000/api/users/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -43,7 +51,7 @@ const Login = () => {
 
       console.log("login response", response);
 
-      if (response.status==200 || response.status==201) {
+      if (response.status === 200 || response.status === 201) {
         const responseData = await response.json();
         alert("Login successful!");
 
@@ -57,7 +65,7 @@ const Login = () => {
         setFormData({
           email: "",
           password: "",
-          // role: "",
+          role: "",
         });
       } else {
         alert("Invalid credentials");
@@ -110,7 +118,7 @@ const Login = () => {
               required
             >
               <option value="" disabled>Select Role</option>
-              <option value="user">user</option>
+              <option value="user">User</option>
               <option value="service">Service</option>
             </select>
           </div>
@@ -129,4 +137,3 @@ const Login = () => {
 };
 
 export default Login;
-

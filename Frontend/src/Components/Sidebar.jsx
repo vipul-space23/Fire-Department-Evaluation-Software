@@ -1,5 +1,5 @@
 import React from 'react';
-import './Sidebar.css';
+import styles from './Sidebarmod.css';  // Ensure this CSS file exists and is correctly imported
 
 // Constants
 const SIDEBAR_MENU_ITEMS = [

@@ -1,6 +1,6 @@
 .app-container {
   display: flex;
-  height: 100vh; /* Full viewport height */
+  height: 100vh; /* Use full viewport height */
 }
 
 .sidebar {
@@ -8,11 +8,14 @@
   background-color: #c0392b; /* Fire department red */
   color: white;
   padding: 20px;
-  position: fixed; /* Fixed position for sidebar */
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1000;
+  position: absolute; /* Absolute positioning for sliding effect */
+  left: -250px; /* Hide sidebar off-screen */
+  transition: left 0.3s ease; /* Smooth transition */
+  z-index: 1000; /* Ensure it appears above content */
+}
+
+.sidebar.open {
+  left: 0; /* Show sidebar when open */
 }
 
 .sidebar h3 {
@@ -42,7 +45,6 @@
 .logout-button {
   background-color: #2980b9; /* Blue for logout button */
   color: white;
-  
   border: none;
   padding: 10px;
   width: 100%;
@@ -54,32 +56,13 @@
   background-color: #1f639b; /* Darker blue on hover */
 }
 
-.hamburger {
-  font-size: 24px;
-  cursor: pointer;
-  color: white;
-  background: none;
-  border: none;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-}
-
 .content {
   flex: 1;
   padding: 20px;
-  margin-left: 250px; /* Adjust margin to prevent content from going behind the sidebar */
   overflow-y: auto; /* Scroll if content overflows */
-  transition: margin-left 0.3s ease; /* Smooth transition for content shift */
 }
 
 .welcome-message {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%; /* Full height to vertically center */
-  text-align: center; /* Center text within the message */
   animation: fadeIn 0.5s; /* Add fade-in effect */
 }
 
@@ -92,9 +75,13 @@
   }
 }
 
-@media (max-width: 768px) {
-  /* For smaller screens, make sure the sidebar is always visible */
-  .content {
-    margin-left: 250px; /* Ensure content doesn't overlap the sidebar */
-  }
+.sidebar-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  margin: 10px;
+  font-size: 24px;
+  position: absolute; /* Position toggle button */
+  z-index: 1001; /* Ensure it's above sidebar */
 }
