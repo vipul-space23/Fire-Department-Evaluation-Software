@@ -1,0 +1,17 @@
+require('dotenv').config(); // To load variables from the .env file
+const { ConductorClient } = require('@orkes/conductor-typescript');
+
+async function main() {
+  // Create a new Conductor client
+  const client = new ConductorClient({
+    keyId: process.env.CONDUCTOR_API_KEY,
+    secret: '',
+    serverUrl: process.env.CONDUCTOR_SERVER_URL
+  });
+
+  console.log('Conductor client initialized successfully!');
+
+  // Later, we'll define tasks and workflows here.
+}
+
+main();

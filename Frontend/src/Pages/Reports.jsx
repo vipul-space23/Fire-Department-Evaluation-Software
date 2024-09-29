@@ -101,7 +101,8 @@ function Reports() {
                         onChange={handleChange}
                     >
                         <option value="1">Functional</option>
-                        <option value="0">Non-Functional</option>
+                        <option value="2">Partially Functional</option>
+                        <option value="3">Non-Functional</option>
                     </select>
                 </label>
                 <label>
