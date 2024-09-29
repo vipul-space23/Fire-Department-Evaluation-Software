@@ -4,6 +4,9 @@ import DashboardStats from './DashboardStats';
 import NocRequests from './NocRequests';
 import '../Pages/CSS/Dashboardmod.css'; // Import the dashboard-specific styles
 
+// Constants
+const SIDEBAR_WIDTH = 250; // Sidebar width for calculation
+
 function Dashboard() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -15,7 +18,7 @@ function Dashboard() {
     return (
         <div className={`dashboard-container ${sidebarOpen ? 'sidebar-open' : ''}`}>
             {/* Hamburger Icon */}
-            <span className={`hamburger ${sidebarOpen ? 'close' : ''}`} onClick={toggleSidebar}>
+            <span className="hamburger" onClick={toggleSidebar}>
                 {sidebarOpen ? '✖' : '☰'} {/* Change icon based on state */}
             </span>
 

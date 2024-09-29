@@ -1,17 +1,4 @@
-/* General styling for the dashboard area */
-.dashboard-container {
-    display: flex;
-    background-color: #f4f4f9;
-    height: 100vh;
-    position: relative;
-}
-#head {
-    text-align: center;
-    display: flex;
-    margin-left: 45%;
-}
-
-/* Sidebar styling for sliding */
+/* Sidebar styling */
 .sidebar {
     height: 100vh;
     width: 250px;
@@ -20,17 +7,20 @@
     color: white;
     position: fixed;
     top: 0;
-    left: -250px; /* Completely off-screen when hidden */
-    transition: left 0.3s ease; /* Smooth sliding */
+    left: -250px; /* Initially off-screen to the left */
+    transition: left 0.3s ease; /* Smooth sliding transition */
+    z-index: 1000; /* Ensure it's above other elements */
 }
 
+/* Active state when sidebar is open */
 .sidebar.active {
-    left: 0; /* Slide in when active */
+    left: 0; /* Slide into view from the left */
 }
 
 .sidebar h5 {
     text-align: center;
     font-size: 18px;
+    margin-bottom: 20px;
 }
 
 .sidebar ul {
@@ -40,18 +30,45 @@
 
 .sidebar ul li {
     padding: 15px;
-    border-bottom: 1px solid #ffffff33;
+    border-bottom: 1px solid #ffffff33; /* Semi-transparent white border */
 }
 
 .sidebar ul li a {
     color: white;
     text-decoration: none;
     font-size: 16px;
+    display: block;
 }
 
 .sidebar ul li a:hover {
     background-color: #b22222; /* Lighter red */
     border-radius: 4px;
+    padding-left: 10px; /* Indent on hover */
+    transition: all 0.3s ease; /* Smooth hover transition */
+}
+
+/* Close button section */
+.close-section {
+    text-align: center; /* Center the close button */
+    margin-top: auto; /* Push it to the bottom of the sidebar */
+    padding: 20px 0; /* Add some padding */
+}
+
+.close-btn {
+    padding: 10px 15px;
+    background-color: #000000; /* Black background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    text-align: center; /* Center text inside the button */
+    width: 100px; /* Fixed button width */
+}
+
+.close-btn:hover {
+    background-color: #d32f2f; /* Darker red on hover */
 }
 
 /* Hamburger menu styling */
@@ -60,10 +77,24 @@
     color: #8B0000;
     cursor: pointer;
     padding: 10px;
-    z-index: 1000; /* Ensure hamburger is above other elements */
-    position: fixed; /* Stay in place when scrolling */
+    position: fixed;
     top: 15px;
     left: 15px;
+    z-index: 1001; /* Above the sidebar */
+}
+
+/* General styling for the dashboard area */
+.dashboard-container {
+    display: flex;
+    background-color: #f4f4f9;
+    height: 100vh;
+    position: relative;
+}
+
+#head {
+    text-align: center;
+    display: flex;
+    margin-left: 45%;
 }
 
 /* Main dashboard area */
@@ -77,29 +108,6 @@
 
 .dashboard-container.sidebar-open .dashboard-main {
     margin-left: 250px; /* Shift content when sidebar is open */
-}
-
-/* Close Button Style */
-.close-section {
-    text-align: center; /* Center the button */
-    margin-top: auto; /* Push it to the bottom */
-    padding: 20px 0; /* Add some padding */
-}
-
-.close-button {
-    padding: 8px 15px; /* Adjust padding */
-    background-color: #b22222; /* Different color for Close button */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px; /* Adjust font size */
-    transition: background-color 0.3s;
-    width: 100px;
-}
-
-.close-button:hover {
-    background-color: #a00000; /* Darker shade on hover */
 }
 
 /* Dashboard Stats and NOC Requests */

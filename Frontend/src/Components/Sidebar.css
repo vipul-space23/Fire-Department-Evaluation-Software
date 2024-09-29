@@ -1,19 +1,29 @@
+/* Constants */
+:root {
+    --sidebar-width: 250px;
+    --sidebar-bg-color: #8B0000;
+    --sidebar-hover-bg-color: #b22222;
+    --close-btn-bg-color: #000000;
+    --close-btn-hover-bg-color: #d32f2f;
+}
+
 /* Sidebar styling */
 .sidebar {
     height: 100vh;
-    width: 250px;
-    background-color: #8B0000; /* Dark Red */
+    width: var(--sidebar-width);
+    background-color: var(--sidebar-bg-color); /* Dark Red */
     padding-top: 20px;
     color: white;
     position: fixed;
     top: 0;
-    left: -250px; /* Initially off-screen */
+    left: calc(-1 * var(--sidebar-width)); /* Initially off-screen */
     transition: left 0.3s ease; /* Smooth sliding transition */
     z-index: 1000; /* Ensure it's above other elements */
 }
 
+/* Active state when sidebar is open */
 .sidebar.active {
-    left: 0; /* Slide in when active */
+    left: 0; /* Slide into view from the left */
 }
 
 .sidebar h5 {
@@ -40,7 +50,7 @@
 }
 
 .sidebar ul li a:hover {
-    background-color: #b22222; /* Lighter red */
+    background-color: var(--sidebar-hover-bg-color); /* Lighter red */
     border-radius: 4px;
     padding-left: 10px; /* Indent on hover */
     transition: all 0.3s ease; /* Smooth hover transition */
@@ -55,7 +65,7 @@
 
 .close-btn {
     padding: 10px 15px;
-    background-color: #000000; /* Black background */
+    background-color: var(--close-btn-bg-color); /* Black background */
     color: white;
     border: none;
     border-radius: 5px;
@@ -67,13 +77,13 @@
 }
 
 .close-btn:hover {
-    background-color: #d32f2f; /* Darker red on hover */
+    background-color: var(--close-btn-hover-bg-color); /* Darker red on hover */
 }
 
-/* Hamburger menu styling (optional) */
+/* Hamburger menu styling */
 .hamburger {
     font-size: 30px;
-    color: #8B0000;
+    color: var(--sidebar-bg-color);
     cursor: pointer;
     padding: 10px;
     position: fixed;
