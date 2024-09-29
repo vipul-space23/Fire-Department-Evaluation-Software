@@ -61,6 +61,7 @@ function ApplyNOC() {
         },
       });
       console.log('Response:', response.data);
+      alert("Done Properly")
     } catch (error) {
       console.error('There was an error submitting the NOC application!', error);
     }
