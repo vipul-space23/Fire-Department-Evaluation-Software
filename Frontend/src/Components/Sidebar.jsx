@@ -1,8 +1,13 @@
 import React from 'react';
-import './Sidebar.css';
+
+import styles from './Sidebarmod.css';  // Correct syntax with quotes
+
+
 
 function Sidebar({ isOpen, toggleSidebar }) {
   return (
+  
+
     <div className={`sidebar ${isOpen ? 'active' : ''}`}>
       <h5>Menu</h5>
       <ul>

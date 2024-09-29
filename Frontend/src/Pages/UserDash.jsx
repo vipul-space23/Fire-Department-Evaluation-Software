@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ApplyNOC from './ApplyNOC'; // Correct path for importing ApplyNOC component
 import TrackStatus from './TrackStatus';
 
-import './CSS/UserDash.css'; // Ensure UserDash.css is in the CSS subdirectory of Pages
+import '../'; // Ensure UserDash.css is in the CSS subdirectory of Pages
 
 function UserDash() {
   const [activeTab, setActiveTab] = useState('Home');

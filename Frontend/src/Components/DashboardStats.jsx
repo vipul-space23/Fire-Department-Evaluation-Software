@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Pages/CSS/Dashboardmod.css'; // Ensure the CSS is imported
+import styles from '../Pages/CSS/Dashboardmod.css'; // Ensure the CSS is imported
 
 function DashboardStats() {
   return (

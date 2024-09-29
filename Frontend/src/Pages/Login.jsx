@@ -4,6 +4,7 @@ import './CSS/Loginmod.css';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import Dashboard from '../Components/Dashboard';
+
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -21,56 +22,58 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {  // Corrected syntax here
     e.preventDefault();
-    if(formData.email=="arane3287@gmail.com" && formData.password==12345 && formData.role=="user"){
+
+    // Simple hardcoded login check
+    if (formData.email === "arane3287@gmail.com" && formData.password === "12345" && formData.role === "user") {
       alert("Login Done");
-      navigate("/UserDash");
-
+      navigate("/Dashboard");
+      return;
     }
-    
+
     // Validate that a role is selected
-    // if (!formData.role) {
-    //   alert("Please select a role.");
-    //   return;
-    // }
+    if (!formData.role) {
+      alert("Please select a role.");
+      return;
+    }
 
-    // console.log("Login Data Submitted:", formData);
+    console.log("Login Data Submitted:", formData);
 
-    // try {
-    //   const response = await axios.post("http://localhost:5000/api/users/login", { // Make sure this URL is correct
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(formData),
-    //   });
+    try {
+      const response = await axios.post("http://localhost:5000/api/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    //   console.log("login response", response);
+      console.log("login response", response);
 
-    //   if (response.status==200 || response.status==201) {
-    //     const responseData = await response.json();
-    //     alert("Login successful!");
+      if (response.status === 200 || response.status === 201) {
+        const responseData = await response.json();
+        alert("Login successful!");
 
-    //     // Store token in localStorage if needed
-    //     // localStorage.setItem("token", responseData.token);
+        // Store token in localStorage if needed
+        // localStorage.setItem("token", responseData.token);
 
-    //     // Navigate to the dashboard page after successful login
-    //     navigate("/Dashboard");
+        // Navigate to the dashboard page after successful login
+        navigate("/Dashboard");
 
-    //     // Reset form fields
-    //     setFormData({
-    //       email: "",
-    //       password: "",
-    //       role: "",
-    //     });
-    //   } else {
-    //     alert("Invalid credentials");
-    //   }
-    // } catch (error) {
-    //   console.error("Error during login:", error);
-    //   alert("An error occurred. Please try again.");
-    // }
+        // Reset form fields
+        setFormData({
+          email: "",
+          password: "",
+          role: "",
+        });
+      } else {
+        alert("Invalid credentials");
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      alert("An error occurred. Please try again.");
+    }
   };
 
   return (
@@ -115,7 +118,7 @@ const Login = () => {
               required
             >
               <option value="" disabled>Select Role</option>
-              <option value="user">user</option>
+              <option value="user">User</option>
               <option value="service">Service</option>
             </select>
           </div>
@@ -134,4 +137,3 @@ const Login = () => {
 };
 
 export default Login;
-

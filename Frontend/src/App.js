@@ -5,7 +5,7 @@ import SignUp from "./Pages/Signup";
 import Dashboard from "./Components/Dashboard";
 import NocDashboard from "./Pages/NocDashboard";
 import Sidebar from "./Components/Sidebar";
-import './Components/Sidebar.css';
+import './Components/Sidebarmod.css';
 import './Pages/CSS/Dashboardmod.css';
 import Inspection from "./Pages/Inspection";
 import UserDash from './Pages/UserDash'; // Import UserDash component
