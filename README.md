@@ -30,3 +30,15 @@ To get started with the project locally, follow these steps:
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/your-repository/fire-department-evaluation-software.git
+
+cd fire-department-evaluation-software
+npm install
+
+DB_CONNECTION=mongodb://localhost:27017/fire_department
+PORT=3000
+
+npm start
+
+
+
+   
