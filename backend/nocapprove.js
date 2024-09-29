@@ -6,6 +6,8 @@ const path = require('path');
 
 const app = express();
 app.use(cors());
+app.use(cors({ origin: '*' }));
+
 app.use(express.json());
 
 // Connect to MongoDB (replace with your MongoDB connection string)
@@ -34,6 +36,11 @@ const nocSchema = new mongoose.Schema({
   },
   documents: String, // Will store the path to the uploaded document
   preferredDate: String,
+  status: {
+    type: String,
+    enum: ['Pending', 'Approved', 'Disapproved'], // Add your statuses here
+    default: 'Pending',
+  },
 });
 
 const NOC = mongoose.model('NOC', nocSchema);
@@ -79,6 +86,54 @@ app.post('/noc-application', upload.single('documents'), (req, res) => {
   }
 });
 
+// Fetch all NOCs
+app.get('/api/nocs', async (req, res) => {
+  try {
+    const nocs = await NOC.find(); // Fetch all NOCs from the database
+    res.json(nocs); // Send JSON response
+  } catch (error) {
+    console.error("Error fetching NOCs:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+// Approve a NOC application
+app.post('/api/nocs/:id/approve', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Find the NOC by ID and update its status
+    const updatedNOC = await NOC.findByIdAndUpdate(id, { status: 'Approved' }, { new: true });
+
+    if (!updatedNOC) {
+      return res.status(404).json({ error: 'NOC not found' });
+    }
+
+    res.json({ message: 'NOC approved successfully', noc: updatedNOC });
+  } catch (error) {
+    console.error("Error approving NOC:", error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+// Disapprove a NOC application
+app.post('/api/nocs/:id/disapprove', async (req, res) => {
+    try {
+      const { id } = req.params;
+  
+      // Find the NOC by ID and update its status
+      const updatedNOC = await NOC.findByIdAndUpdate(id, { status: 'Disapproved' }, { new: true });
+  
+      if (!updatedNOC) {
+        return res.status(404).json({ error: 'NOC not found' });
+      }
+  
+      res.json({ message: 'NOC disapproved successfully', noc: updatedNOC });
+    } catch (error) {
+      console.error("Error disapproving NOC:", error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+  
 // Start the server
 app.listen(5001, () => {
   console.log('Server is running on port 5001');
