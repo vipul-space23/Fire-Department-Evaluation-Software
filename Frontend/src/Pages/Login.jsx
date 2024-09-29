@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import './CSS/Loginmod.css';
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -32,7 +33,7 @@ const Login = () => {
     console.log("Login Data Submitted:", formData);
 
     try {
-      const response = await fetch("http://localhost:5000/api/users/login", { // Make sure this URL is correct
+      const response = await axios.post("http://localhost:5000/api/users/login", { // Make sure this URL is correct
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -56,7 +57,7 @@ const Login = () => {
         setFormData({
           email: "",
           password: "",
-          role: "",
+          // role: "",
         });
       } else {
         alert("Invalid credentials");
