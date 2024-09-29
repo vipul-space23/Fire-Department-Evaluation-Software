@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './CSS/ApplyNOC.css';
 
 function ApplyNOC() {
@@ -43,16 +44,26 @@ function ApplyNOC() {
     setDocuments(e.target.files[0]);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log({
-      applicantInfo,
-      propertyDetails,
-      fireSafety,
-      documents,
-      preferredDate,
-    });
+
+    const formData = new FormData();
+    formData.append('documents', documents);
+    formData.append('applicantInfo', JSON.stringify(applicantInfo));
+    formData.append('propertyDetails', JSON.stringify(propertyDetails));
+    formData.append('fireSafety', JSON.stringify(fireSafety));
+    formData.append('preferredDate', preferredDate);
+
+    try {
+      const response = await axios.post('http://localhost:5001/noc-application', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      console.log('Response:', response.data);
+    } catch (error) {
+      console.error('There was an error submitting the NOC application!', error);
+    }
   };
 
   return (
