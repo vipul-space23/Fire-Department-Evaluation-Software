@@ -9,7 +9,7 @@ function NocRequests({ toggleSidebar, isOpen }) {
 
             {/* NOC Requests content */}
             <div className="noc-requests">
-                <h2>NOC Requests</h2>
+                
                 {/* Add your NOC Requests content here */}
             </div>
         </div>

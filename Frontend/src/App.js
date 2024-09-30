@@ -10,6 +10,7 @@ import './Pages/CSS/Dashboardmod.css';
 import Inspection from "./Pages/Inspection";
 import UserDash from './Pages/UserDash';
 import Reports from './Pages/Reports';  // Import the Reports component
+import ApplyNOC from "./Pages/ApplyNOC";
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -33,6 +34,8 @@ function App() {
             <Route path="/NocDashboard" element={<NocDashboard />} />
             <Route path="/Inspection" element={<Inspection />} />
             <Route path="/UserDash" element={<UserDash />} />
+            <Route path="/ApplyNoc" element={<ApplyNOC/>} />
+
             
             {/* Add the Reports route */}
             <Route path="/Reports" element={<Reports />} />

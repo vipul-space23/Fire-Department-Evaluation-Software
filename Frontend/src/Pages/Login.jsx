@@ -26,7 +26,7 @@ const Login = () => {
     e.preventDefault();
 
     // Simple hardcoded login check
-    if (formData.email === "arane3287@gmail.com" && formData.password === "12345" && formData.role === "user") {
+    if (formData.email === "arane3287@gmail.com" && formData.password === "12345" && formData.role === "Admin") {
       alert("Login Done");
       navigate("/Dashboard");
       return;
@@ -119,7 +119,7 @@ const Login = () => {
             >
               <option value="" disabled>Select Role</option>
               <option value="user">User</option>
-              <option value="service">Service</option>
+              <option value="Admin">Admin</option>
             </select>
           </div>
 
