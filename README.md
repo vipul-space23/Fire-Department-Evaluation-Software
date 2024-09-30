@@ -30,20 +30,20 @@ To get started with the project locally, follow these steps:
 
 # 🔥 Automated Fire Safety Report Generation
 
-## Overview
+# Overview
 This feature enables admins to generate fire safety inspection reports effortlessly by inputting key details.
 
-## How It Works
+# How It Works
 1. **Input Form**: Admins enter details such as building name, inspection date, inspector name, and conditions of fire extinguishers and alarms.
 2. **Report Generation**: Upon submission, the data is processed, and an AI model creates a detailed PDF report.
 3. **Download**: The generated report is automatically downloaded for easy access.
 
-## Benefits
+# Benefits
 - **Efficiency**: Saves time by automating report creation.
 - **Accuracy**: Reduces human error in data entry.
 - **Simplicity**: User-friendly form for quick report generation.
 
-## Usage
+# Usage
 Navigate to the **Reports** section, fill out the form, and click **Generate Report** to download your inspection report.
 
 
