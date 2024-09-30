@@ -24,31 +24,29 @@ To get started with the project locally, follow these steps:
 - **Node.js** (v16+)
 - **MongoDB/MySQL** (Depending on your database choice)
 - **Git**
+
+  
 ### Implementation of GEN AI :
-- **Automated Report Generation**: 
-Our Automated Report Generation feature allows admins to generate detailed fire safety inspection reports based on the inputs they provide. This feature streamlines the process by automatically creating comprehensive reports, saving time and reducing manual effort.
 
-How It Works
-Input Form: Admins can input key details such as:
+# 🔥 Automated Fire Safety Report Generation
 
-Building name
-Inspection date
-Inspector's name
-Fire extinguisher functionality
-Fire alarm condition
-Exit condition rating
-Additional comments on fire extinguishers and alarms
-AI-Powered Report Generation:
+## Overview
+This feature enables admins to generate fire safety inspection reports effortlessly by inputting key details.
 
-Once the form is submitted, the data is processed and sent to the backend, where an AI model generates a detailed fire safety inspection report in PDF format.
-The report includes the provided inputs, any flagged issues, and a professional summary of the building's safety status.
-Downloadable Report:
+## How It Works
+1. **Input Form**: Admins enter details such as building name, inspection date, inspector name, and conditions of fire extinguishers and alarms.
+2. **Report Generation**: Upon submission, the data is processed, and an AI model creates a detailed PDF report.
+3. **Download**: The generated report is automatically downloaded for easy access.
 
-The generated report is automatically downloaded as a PDF, ready for distribution or archiving.
-Benefits
-Efficiency: Automatically generates a structured report with minimal admin input.
-Accuracy: Ensures all key fire safety details are captured, reducing the risk of human error.
-Simplicity: Easy-to-use form that allows admins to quickly generate reports without technical expertise.
+## Benefits
+- **Efficiency**: Saves time by automating report creation.
+- **Accuracy**: Reduces human error in data entry.
+- **Simplicity**: User-friendly form for quick report generation.
+
+## Usage
+Navigate to the **Reports** section, fill out the form, and click **Generate Report** to download your inspection report.
+
+
 
 ### Steps
 
