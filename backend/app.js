@@ -8,15 +8,15 @@ const { errorHandler } = require("./middlewares/errorHandler");
 const cookieParser = require("cookie-parser");
 const nocRoutes = require("./routes/nocRoutes");
 
-// const cors = require("cors");
+const cors = require("cors");
 
-// app.use(
-//   cors({
-//     origin: "http://localhost:3001", // Adjust the origin if necessary
-//     methods: ["GET", "POST", "PUT", "DELETE"], // Allow specific methods
-//     credentials: true, // Enable cookies to be sent
-//   })
-// );
+app.use(
+  cors({
+    origin: "http://localhost:3000", // Adjust the origin if necessary
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allow specific methods
+    credentials: true, // Enable cookies to be sent
+  })
+);
 
 const db = require("./config/mongoose-connection");
 

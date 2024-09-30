@@ -1,15 +1,13 @@
 import os
 import google.generativeai as genai
-from flask import Flask, render_template, request, send_file
-from flask_cors import CORS  # Import flask_cors to handle CORS
-from reportlab.lib.pagesizes import letter
+from flask import Flask, render_template, request, send_file, jsonify
+from flask_cors import CORS
+from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
 from datetime import datetime
 
 app = Flask(__name__)
-
-# Enable CORS for all routes
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+CORS(app)  # Enable CORS for all routes
 
 # Configure the API key
 genai.configure(api_key="AIzaSyDXTiguL-_iLS0QF0zJJ59Ir646GF5eVrE")
@@ -30,7 +28,7 @@ model = genai.GenerativeModel(
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html')  # Render the main page if needed
 
 @app.route('/generate_report', methods=['POST'])
 def generate_report():
@@ -74,15 +72,15 @@ def generate_report():
     # Create a PDF of the report
     pdf_file = create_pdf(report_output, user_responses['building_name'])
 
-    return send_file(pdf_file, as_attachment=False)
+    return send_file(pdf_file, as_attachment=True)
 
 def create_pdf(report_output, building_name):
     # Use timestamp in filename to avoid overwriting
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     pdf_file = f"fire_safety_inspection_report_{building_name}_{timestamp}.pdf"
     
-    c = canvas.Canvas(pdf_file, pagesize=letter)
-    width, height = letter
+    c = canvas.Canvas(pdf_file, pagesize=A4)
+    width, height = A4  # Use A4 dimensions
 
     # Title
     c.setFont("Helvetica-Bold", 16)
@@ -95,8 +93,16 @@ def create_pdf(report_output, building_name):
     for line in lines:
         # Replace Markdown-like formatting with proper formatting
         line = line.replace('**', '').replace('*', '•').replace('#', '')
-        c.drawString(100, y, line)
+        c.drawString(50, y, line)  # Adjust x position for better margins
         y -= 20  # Move down for the next line
+
+        # Check if the y position is too low to add more lines
+        if y < 50:  # If there is no more space, create a new page
+            c.showPage()
+            c.setFont("Helvetica-Bold", 16)
+            c.drawString(100, height - 50, "Fire Safety Inspection Report")
+            c.setFont("Helvetica", 12)
+            y = height - 80  # Reset y position for new page
 
     c.save()
     print(f"PDF report generated: {pdf_file}")
