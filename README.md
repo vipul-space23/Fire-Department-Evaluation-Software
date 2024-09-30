@@ -26,9 +26,9 @@ To get started with the project locally, follow these steps:
 - **Git**
 
   
-### Implementation of GEN AI :
 
-# 🔥 Automated Fire Safety Report Generation
+
+# 🔥 Automated Fire Safety Report Generation Using Gen AI
 
 ## Overview
 This feature enables admins to generate fire safety inspection reports effortlessly by inputting key details.
