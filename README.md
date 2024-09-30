@@ -24,6 +24,8 @@ To get started with the project locally, follow these steps:
 - **Node.js** (v16+)
 - **MongoDB/MySQL** (Depending on your database choice)
 - **Git**
+### Implementation of GEN AI :
+
 
 ### Steps
 
