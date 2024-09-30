@@ -5,12 +5,15 @@ from flask_cors import CORS
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
 from datetime import datetime
+from dotenv import load_dotenv
+load_dotenv()
+
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
 # Configure the API key
-genai.configure(api_key="AIzaSyDXTiguL-_iLS0QF0zJJ59Ir646GF5eVrE")
+genai.configure(api_key=os.getenv("API_KEY"))
 
 # Create the model
 generation_config = {
