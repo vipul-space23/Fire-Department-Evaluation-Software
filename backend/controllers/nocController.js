@@ -1,4 +1,4 @@
-const nocApplication = require("../models/noc")
+const nocApplication = require("../models/NocApplication")
 // Middleware to check if user is an admin
 exports.checkAdmin = (req, res, next) => {
   const userRole = req.body.role; // Assume role is passed in the request body or from session (for simplicity)
