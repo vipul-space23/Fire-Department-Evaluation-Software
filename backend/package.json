@@ -21,13 +21,10 @@
     "googleapis": "^144.0.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.7.0",
-<<<<<<< HEAD
     "node-fetch": "^3.3.2",
     "nodemon": "^3.1.7"
-=======
     "multer": "^1.4.5-lts.1",
     "node-fetch": "^3.3.2"
->>>>>>> 346d4fabafd8e6e72efe4895919ad8e3a70cd02e
   },
   "description": ""
 }
